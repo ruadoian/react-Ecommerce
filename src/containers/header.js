@@ -1,16 +1,16 @@
 import React from "react"
 import * as ROUTES from "../constants/routes"
 
-import {Header} from "../components"
+import {Header} from "../components/"
 import {Link as ReactLink} from "react-router-dom"
-import {sections} from "../constants/headerdata"
 
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 
 export function HeaderContainer({children}){
     return(
-        <Header sections={sections}>
+        <>
+        <Header>
         <Header.Button size="small">Subscribe</Header.Button>
         <Header.Typography
           component="h2"
@@ -34,6 +34,7 @@ export function HeaderContainer({children}){
         </Header.Button>
 
       </Header>
+        </>
 
     )
 }
