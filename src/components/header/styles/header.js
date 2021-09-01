@@ -12,11 +12,11 @@ export const useStyles = makeStyles((theme) => ({
       overflowX: 'auto',
     },
     toolbarLink: {
-      padding: theme.spacing(1),
+      padding: theme.spacing(1.5),
       flexShrink: 0,
     },
-    headerBtn:{
-      marginRight: '2rem',
-    },
+    toolbarBtn:{
+      margin:'3px',
+    }
 
   }));

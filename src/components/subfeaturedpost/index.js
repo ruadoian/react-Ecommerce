@@ -1,57 +1,51 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import {
+  Grid,
+  Card, 
+  Hidden, 
+  Typography,
+  CardContent, 
+  CardActionArea} from "@material-ui/core"
 
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Hidden from '@material-ui/core/Hidden';
+  import CardMedia from '@material-ui/core/CardMedia';
 
 import {useStyles} from "./styles/subfeaturedpost"
+import {CardDetail} from "./styles/subfeaturedpost"
 
-
-export default function SubFeaturedPost(props) {
-  const classes = useStyles();
-  const { post } = props;
-  
-  return (
-    <>
-    <Grid container spacing={3}>
-      {post.map(post =>(
-        <Grid item xs={6}>
-        <CardActionArea component="a" href="#">
-        <Card className={classes.card}>
-          <div className={classes.cardDetails}>
-            <CardContent>
-              <Typography component="h2" variant="h5">
-                {post.title}
-              </Typography>
-              <Typography variant="subtitle1" color="textSecondary">
-                {post.date}
-              </Typography>
-              <Typography variant="subtitle1" paragraph>
-                {post.description}
-              </Typography>
-              <Typography variant="subtitle1" color="primary">
-                Continue reading...
-              </Typography>
-            </CardContent>
-          </div>
-          <Hidden xsDown>
-            <CardMedia className={classes.cardMedia} image={post.image} title={post.imageTitle} />
-          </Hidden>
-        </Card>
-        </CardActionArea>
-      </Grid>
-      ))}    
-    </Grid>
-    </>
-     
-  );
+export default function SubFeaturedPost({children, ...restProps}){
+  return <Grid {...restProps}>{children}</Grid>
 }
 
-SubFeaturedPost.propTypes = {
-  post: PropTypes.object,
-};
+SubFeaturedPost.Wrapper = function SubFeaturedPostWrapper({children, ...restProps}){
+  return <Grid {...restProps}>{children}</Grid>
+}
+
+SubFeaturedPost.CardWrapper = function SubFeaturedPostCardWrapper({children, ...restProps}){
+  
+  return <CardActionArea {...restProps}>{children}</CardActionArea>
+}
+
+SubFeaturedPost.Card = function SubFeaturedPostCard({children, ...restProps}){
+  const classes = useStyles()
+  return <Card {...restProps} className={classes.Card}>{children}</Card>
+}
+
+SubFeaturedPost.CardDetail = function SubFeaturedPostCardDetail({children, ...restProps}){
+  const classes = useStyles()
+  return <CardDetail {...restProps} className={classes.CardDetail}>{children}</CardDetail>
+}
+
+SubFeaturedPost.CardContent = function SubFeaturedPostCardContent({children, ...restProps}){
+  return <CardContent {...restProps}>{children}</CardContent>
+}
+
+SubFeaturedPost.Typography = function SubFeaturedPostTypography({children, ...restProps}){
+  return <Typography {...restProps}>{children}</Typography>
+}
+
+SubFeaturedPost.Hidden = function SubFeaturedPostHidden({image, title}){
+  const classes = useStyles()
+  return <Hidden xsDown>
+          {image}
+          <CardMedia image={image} title={title} className={classes.CardMedia} />
+        </Hidden>
+}

@@ -14,20 +14,20 @@ import Typography from '@material-ui/core/Typography';
 import {useStyles} from "./styles/signin"
 import {theme} from "./styles/signin"
 
-import {signInWithGoogle} from "../../firebase/utils"
+// import {signInWithGoogle} from "../../firebase/utils"
 
-export default function SignInSide() {
+export default function SigninSide() {
   const classes = useStyles();
 
   const handleSubmit = async e =>{
     e.preventDefault();
   }
 
-
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
+
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -74,7 +74,7 @@ export default function SignInSide() {
               color="primary"
               className={classes.submit}
               theme={theme}
-              onClick={signInWithGoogle}
+              // onClick={() => signInWithGoogle}
             >
               Sign In With Google
             </Button>

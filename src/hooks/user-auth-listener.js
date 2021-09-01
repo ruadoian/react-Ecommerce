@@ -1,23 +1,25 @@
-import { useState, useEffect } from "react"
-import {auth} from "../firebase/utils"
+import {useState, useEffect} from "react"
+import {auth, handleUserProfile} from "../firebase/utils"
 
 export default function useAuthListener(){
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('authUser')))
-    
+    const [currentUser, setCurrentUser] = useState();
 
-    useEffect(()=>{
-        const listener = auth().onAuthStateChanged((authUser) =>{
-            if(authUser){
-                localStorage.setItem('authUser', JSON.stringify(authUser))
-                setUser(authUser);
-            }else{
-                localStorage.removeItem('authUser')
-                setUser(null)
+    useEffect(() => {
+        const authListener = auth.onAuthStateChanged(async userAuth =>{
+            if(userAuth){
+                const useRef = await handleUserProfile(userAuth);
+                useRef.onSnapshot(snapshot =>{
+                    setCurrentUser({
+                        id:snapshot.id,
+                        ...snapshot.data()
+                    })
+                })
             }
-        });
 
-        return() => listener();
-    },[])
+            setCurrentUser(userAuth)
+        })
+        return () => authListener
+    }, [])
 
-    return {user};
+    return {currentUser}
 }

@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import styled from "styled-components"
 
 export const useStyles = makeStyles({
   root: {
@@ -7,10 +8,12 @@ export const useStyles = makeStyles({
   card: {
       display: 'flex',
   },
-  cardDetails: {
-      flex: 2,
-    },
   cardMedia: {
       width: 160,
+      height: 0,
     },
   });
+
+  export const CardDetail = styled.div`
+    flex:2;
+  `

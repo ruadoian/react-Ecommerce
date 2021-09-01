@@ -5,4 +5,4 @@ export const firebaseConfig = {
         storageBucket: "react-ecommerce-ffe11.appspot.com",
         messagingSenderId: "163165262545",
         appId: "1:163165262545:web:dd254844f60c4ccec66bf0"
-      };
+};
