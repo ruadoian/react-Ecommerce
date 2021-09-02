@@ -17,11 +17,14 @@ export default function(){
                     <Home currentUser={currentUser} />
                 </Route>
                 
-                <Route path={ROUTES.SIGNIN}>
-                  {currentUser ? <Redirect to="/" /> : <SigninPage/>} 
-                </Route>    
+
+                <Route path={ROUTES.SIGNIN} 
+                  render={() => (currentUser ? <Redirect to={ROUTES.HOME}/> : <SigninPage/> )}
+                />
       
-                <Route path={ROUTES.SIGNUP}><SignupPage/></Route>
+                <Route path={ROUTES.SIGNUP} 
+                  render={() => (currentUser ? <Redirect to={ROUTES.HOME}/> : <SignupPage/>)} />
+
               </Switch>
           </Router>
         );

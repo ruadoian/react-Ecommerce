@@ -7,8 +7,6 @@ import {sections} from "../constants/headerdata"
 
 
 export default function Home({currentUser}){
-  
-
     return  <>
                 <HeaderContainer sections={sections} currentUser={currentUser} />  
                 <FeaturedContainer post={mainFeaturedPost}/>

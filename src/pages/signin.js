@@ -1,14 +1,24 @@
 import {Form } from "../components/"
 import {Paper, FormControlLabel, Checkbox, Link} from "@material-ui/core"
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import {signInWithGoogle} from "../firebase/utils"
-
+import {signInWithGoogle, auth} from "../firebase/utils"
+import {useInput} from "../hooks/input-hooks"
 
 export default function SigninPage(){
     
-    const handleSubmit = (event) =>{
-        event.preventDefault()
-        console.log("HEllo there!")
+    const {value:email, bind:bindEmail, reset:resetEmail} = useInput()
+    const {value:password, bind:bindPassword, reset:resetPassword} = useInput()
+
+    const handleSubmit = async e =>{
+        e.preventDefault()
+
+        try{
+            await auth.signInWithEmailAndPassword(email, password)
+            resetEmail()
+            resetPassword()
+        }catch(err){
+            //console.log(err)
+        }
     }
     
     return(
@@ -27,6 +37,7 @@ export default function SigninPage(){
                             <Form.Base noValidate onSubmit={handleSubmit}>
                                     
                                 <Form.TextField 
+                                    {...bindEmail}
                                      variant="outlined"
                                      margin="normal"
                                      required
@@ -39,6 +50,7 @@ export default function SigninPage(){
                                 />
 
                                 <Form.TextField 
+                                    {...bindPassword}
                                     variant="outlined"
                                     margin="normal"
                                     required
