@@ -16,17 +16,17 @@ export default function SubFeaturedPost({children, ...restProps}){
 }
 
 SubFeaturedPost.Wrapper = function SubFeaturedPostWrapper({children, ...restProps}){
-  return <Grid {...restProps}>{children}</Grid>
+  const classes = useStyles()
+  return <Grid {...restProps} className={classes.paper}>{children}</Grid>
 }
 
 SubFeaturedPost.CardWrapper = function SubFeaturedPostCardWrapper({children, ...restProps}){
-  
   return <CardActionArea {...restProps}>{children}</CardActionArea>
 }
 
 SubFeaturedPost.Card = function SubFeaturedPostCard({children, ...restProps}){
   const classes = useStyles()
-  return <Card {...restProps} className={classes.Card}>{children}</Card>
+  return <Card {...restProps} className={classes.card}>{children}</Card>
 }
 
 SubFeaturedPost.CardDetail = function SubFeaturedPostCardDetail({children, ...restProps}){
@@ -45,7 +45,6 @@ SubFeaturedPost.Typography = function SubFeaturedPostTypography({children, ...re
 SubFeaturedPost.Hidden = function SubFeaturedPostHidden({image, title}){
   const classes = useStyles()
   return <Hidden xsDown>
-          {image}
-          <CardMedia image={image} title={title} className={classes.CardMedia} />
+          <CardMedia image={image} title={title} className={classes.cardMedia}/>
         </Hidden>
 }

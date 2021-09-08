@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import styled from "styled-components"
 
-export const useStyles = makeStyles({
+export const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
@@ -10,9 +10,13 @@ export const useStyles = makeStyles({
   },
   cardMedia: {
       width: 160,
-      height: 0,
     },
-  });
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  }));
 
   export const CardDetail = styled.div`
     flex:2;

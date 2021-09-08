@@ -17,7 +17,6 @@ export default function(){
                     <Home currentUser={currentUser} />
                 </Route>
                 
-
                 <Route path={ROUTES.SIGNIN} 
                   render={() => (currentUser ? <Redirect to={ROUTES.HOME}/> : <SigninPage/> )}
                 />
@@ -29,49 +28,3 @@ export default function(){
           </Router>
         );
 }
-
-// const initialState = {
-//   currentUser:null
-// }
-
-// class App extends Component {
-//   constructor(props){
-//     super(props)
-//     this.state = {...initialState}
-//   }
-
-//   authListener = null;
-
-//   componentDidMount(){
-//     this.authListener = auth.onAuthStateChanged(userAuth => {
-//       if(!userAuth) return;
-
-//       this.setState({
-//         currentUser:userAuth
-//       })
-//     })
-//   }
-
-//   componentWillUnmount(){
-//     this.authListener();
-//   }
-
-//   render(){
-//     const {currentUser} = this.state
-//     return (
-//       <Router>
-//           <Switch>
-//             <Route exact path={ROUTES.HOME} ><Home currentUser={currentUser} /></Route>
-            
-//             <Route path={ROUTES.SIGNIN}>
-//               {currentUser ? <Redirect to="/" /> : <SigninPage currentUser={currentUser}/>} 
-//             </Route>    
-  
-//             <Route path={ROUTES.SIGNUP}><SignupPage/></Route>
-//           </Switch>
-//       </Router>
-//     );
-//   }
-// }
-
-// export default App;

@@ -1,11 +1,11 @@
 import { SubFeaturedPost } from "../components";
+import { CardMedia } from "@material-ui/core";
 
-import { Hidden, CardMedia } from "@material-ui/core";
-
-export function SubFeaturedPostContainer({post}){
+export function SubFeaturedPostContainer({posts}){
   return(
        <SubFeaturedPost container spacing={3}>
-         {post.map(post =>(
+         <CardMedia image={posts.image}/>
+         {posts.map(post =>(
            <SubFeaturedPost.Wrapper item xs={6}>
            <SubFeaturedPost.CardWrapper component="a" href="#">
              <SubFeaturedPost.Card className="">
@@ -17,7 +17,6 @@ export function SubFeaturedPostContainer({post}){
                     <SubFeaturedPost.Typography variant="subtitle1" color="textSecondary">
                         {post.date}
                     </SubFeaturedPost.Typography>
-
                     <SubFeaturedPost.Typography variant="subtitle1" paragraph>
                         {post.description}
                     </SubFeaturedPost.Typography>
@@ -26,13 +25,15 @@ export function SubFeaturedPostContainer({post}){
                     </SubFeaturedPost.Typography>
                  </SubFeaturedPost.CardContent>
                </SubFeaturedPost.CardDetail>
-
               <SubFeaturedPost.Hidden image={post.image} title={post.imageTitle}/>
-
              </SubFeaturedPost.Card>
            </SubFeaturedPost.CardWrapper>
          </SubFeaturedPost.Wrapper>
          ))}
+          <CardMedia image={posts.image} title={posts.title} />
        </SubFeaturedPost>
      )
 }
+
+
+
