@@ -9,7 +9,7 @@ import {Form} from "../components"
 import * as ROUTES from "../constants/routes"
 import { Redirect } from 'react-router';
 
-export default function SignupPage(){
+export default function Signup(){
 
     const {value:firstName, bind:bindFirstName, reset:resetFirstName} = useInput()
     const {value:lastName, bind:bindLastName, reset:resetLastName} = useInput()
@@ -37,6 +37,8 @@ export default function SignupPage(){
             console.log(err)
         }
    }
+
+   
    const displayError = error.length > 0 ? <Alert severity="error">{error}</Alert> : null;
     return(
        <Form.Container component="main" maxwidth="xs">

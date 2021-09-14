@@ -3,15 +3,15 @@ import {Paper, FormControlLabel, Checkbox, Link} from "@material-ui/core"
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {signInWithGoogle, auth} from "../firebase/utils"
 import {useInput} from "../hooks/input-hooks"
+import * as ROUTES from "../constants/routes"
 
-export default function SigninPage(){
+export default function Signin(){
     
     const {value:email, bind:bindEmail, reset:resetEmail} = useInput()
     const {value:password, bind:bindPassword, reset:resetPassword} = useInput()
 
     const handleSubmit = async e =>{
         e.preventDefault()
-
         try{
             await auth.signInWithEmailAndPassword(email, password)
             resetEmail()
@@ -88,7 +88,7 @@ export default function SigninPage(){
 
                                 <Form.Item container>
                                     <Form.Item item xs>
-                                        <Link href="#" variant="body2">
+                                        <Link href={ROUTES.RECOVERY} variant="body2">
                                         Forgot password?
                                         </Link>
                                     </Form.Item>

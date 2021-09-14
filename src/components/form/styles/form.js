@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { createTheme, makeStyles } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
+import { green, red } from '@material-ui/core/colors';
 
 export const useStyles = makeStyles((theme) => ({
     root: {

@@ -8,12 +8,13 @@ export default function Form({children, ...restProps}){
 }
 
 Form.Item = function FormItem({children, ...restProps}){
-    return <Grid {...restProps}>{children}</Grid>
+    const classes = useStyles()
+    return <Grid {...restProps} className={classes.Image}>{children}</Grid>
 }
 
-Form.Wrapper = function FormWrapper({children, ...restProps}){
+Form.Wrapper = function FormWrapper({children, styleName, ...restProps}){
     const classes = useStyles()
-    return <Wrapper {...restProps} className={classes.paper}>{children}</Wrapper>
+    return <div {...restProps} className={classes.paper} >{children}</div>
 }
 
 Form.Avatar = function FormAvatar({children, ...restProps}){

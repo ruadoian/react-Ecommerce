@@ -1,8 +1,7 @@
 import React,{Component} from "react"
-import Home from "./pages/home"
-import SignupPage from "./pages/signup"
-import SigninPage from "./pages/signin"
+import { Home, Signin, Signup, Recovery } from "./pages/index"
 import * as ROUTES from "./constants/routes"
+import {GlobalStyles} from "./globalStyles"
 
 import {BrowserRouter as Router, Switch, Redirect} from "react-router-dom"
 import {Route} from "react-router-dom"
@@ -14,15 +13,16 @@ export default function(){
           <Router>
               <Switch>
                 <Route exact path={ROUTES.HOME} >
-                    <Home currentUser={currentUser} />
+                <GlobalStyles/>
+                    <Home currentUser={currentUser}  />
                 </Route>
                 
                 <Route path={ROUTES.SIGNIN} 
-                  render={() => (currentUser ? <Redirect to={ROUTES.HOME}/> : <SigninPage/> )}
+                  render={() => (currentUser ? <Redirect to={ROUTES.HOME}/> : <Signin/> )}
                 />
-      
+    
                 <Route path={ROUTES.SIGNUP} 
-                  render={() => (currentUser ? <Redirect to={ROUTES.HOME}/> : <SignupPage/>)} />
+                  render={() => (currentUser ? <Redirect to={ROUTES.HOME}/> : <Signup/>)} />
 
               </Switch>
           </Router>
